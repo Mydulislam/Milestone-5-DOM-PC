@@ -1,53 +1,59 @@
-function phonePlus(){
-    let phoneInputQuantity = document.getElementById('phone-quantity');
-    let phoneQuantityString = phoneInputQuantity.value;
-    let phoneQuantityNumber = parseInt(phoneQuantityString);
-    let increasePhoneQuantity = phoneQuantityNumber + 1;
-    phoneInputQuantity.value = increasePhoneQuantity;
-    
-    let phoneQuantityPrice = document.getElementById('phone-price');
-    let phoneQuantityPriceTotal = increasePhoneQuantity * 1219;
-    phoneQuantityPrice.innerText = phoneQuantityPriceTotal;
-    return phoneQuantityPriceTotal;
+function innerText(priceId , value){
+    let phonePrice = document.getElementById(priceId);
+    phonePrice.innerText = value;
+}
+function pricePlus(buttonPlus){
+    let inputQuantityIncrease = document.getElementById(buttonPlus);
+    let inputQuantityStringIncrease = inputQuantityIncrease.value;
+    let inpuQuantityNumberIncrease = parseInt(inputQuantityStringIncrease);
+    let increaseInput = inpuQuantityNumberIncrease + 1;
+    inputQuantityIncrease.value = increaseInput;
+    let price = increaseInput * 1219;
+    innerText('phone-price' , price)
 }
 
-function phonMinus(){
-    let phoneInputQuantity = document.getElementById('phone-quantity');
-    let phoneQuantityString = phoneInputQuantity.value;
-    let phoneQuantityNumber = parseInt(phoneQuantityString);
-    let decreasePhoneQuantity = phoneQuantityNumber - 1;
-    phoneInputQuantity.value = decreasePhoneQuantity;
-    
-    let phoneQuantityPrice = document.getElementById('phone-price');
-    let phoneQuantityPriceTotal = decreasePhoneQuantity * 1219;
-    phoneQuantityPrice.innerText = phoneQuantityPriceTotal;
-    return phoneQuantityPriceTotal;
+function priceMinus(buttonMinus){
+    let InputQuantityDecrease = document.getElementById(buttonMinus);
+    let inputQuantityStringDecrease = InputQuantityDecrease.value;
+    let inpuQuantityNumberDecrease = parseInt(inputQuantityStringDecrease);
+    let decreaseInput = inpuQuantityNumberDecrease - 1;
+    InputQuantityDecrease.value = decreaseInput;
+    let price = decreaseInput * 1219;
+    innerText('phone-price' , price)
+}
+function casePlus(buttonPlus){
+    let inputQuantityIncrease = document.getElementById(buttonPlus);
+    let inputQuantityStringIncrease = inputQuantityIncrease.value;
+    let inpuQuantityNumberIncrease = parseInt(inputQuantityStringIncrease);
+    let increaseInput = inpuQuantityNumberIncrease + 1;
+    inputQuantityIncrease.value = increaseInput;
+    let price = increaseInput * 59;
+    innerText('case-price' , price)
 }
 
-// casing price 
-
-function casingPlus(){
-    let caseInputQuantity = document.getElementById('case-quantity');
-    let caseInputQuantityString = caseInputQuantity.value;
-    let caseInputQuantityNumber = parseInt(caseInputQuantityString);
-    let increaseCaseQuantity = caseInputQuantityNumber + 1;
-    caseInputQuantity.value = increaseCaseQuantity;
-
-    let casePrice = document.getElementById('case-price');
-    let totalCasePrice = increaseCaseQuantity * 59;
-    casePrice.innerText = totalCasePrice;
-    return totalCasePrice;
+function caseMinus(buttonMinus){
+    let InputQuantityDecrease = document.getElementById(buttonMinus);
+    let inputQuantityStringDecrease = InputQuantityDecrease.value;
+    let inpuQuantityNumberDecrease = parseInt(inputQuantityStringDecrease);
+    let decreaseInput = inpuQuantityNumberDecrease - 1;
+    InputQuantityDecrease.value = decreaseInput;
+    let price = decreaseInput * 59;
+    innerText('case-price' , price)
 }
-
-function casingMinus(){
-    let caseInputQuantity = document.getElementById('case-quantity');
-    let caseInputQuantityString = caseInputQuantity.value;
-    let caseInputQuantityNumber = parseInt(caseInputQuantityString);
-    let decreaseCaseQuantity = caseInputQuantityNumber - 1;
-    caseInputQuantity.value = decreaseCaseQuantity;
-
-    let casePrice = document.getElementById('case-price');
-    let totalCasePrice = decreaseCaseQuantity * 59;
-    casePrice.innerText = totalCasePrice;
-    return totalCasePrice;
+function priceCalculate(priceId){
+    let Price = document.getElementById(priceId);
+    let PriceValue = Price.innerText;
+    let priceNumber = parseInt(PriceValue);
+    return priceNumber;
+}
+function price(){
+    let phonePriceNumber = priceCalculate('phone-price')
+    let casePriceNumber = priceCalculate('case-price');
+    let totalPrice = phonePriceNumber + casePriceNumber;
+    innerText('sub-total' , totalPrice)
+    let taxPrice = (totalPrice * 0.1).toFixed(2);
+    innerText('tax' , taxPrice);
+    let totalPriceNumber = parseFloat(taxPrice)
+    let finalTotal = totalPrice + totalPriceNumber;
+    innerText('final-total' , finalTotal)
 }
